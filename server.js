@@ -6,12 +6,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/login', (req, res) => {
-    console.log('May nag-try mag-login:', req.body);
+    console.log('Login request received:', req.body);
     res.json({
+        code: 0,
         status: 0,
-        message: "Login Success!",
-        token: "fake-session-token-12345"
+        msg: "success",
+        token: "mock-token-12345",
+        uid: "123456"
     });
+});
+
+app.get('/', (req, res) => {
+    res.send('Server is active');
 });
 
 app.listen(PORT, () => {
